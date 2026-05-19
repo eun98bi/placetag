@@ -18,7 +18,7 @@ const FETCH_HEADERS: HeadersInit = {
 };
 
 function isListUrl(url: string): boolean {
-  return /place\.naver\.com\/place\/list/.test(url);
+  return /pcmap\.place\.naver\.com\/[^/?]+\/list/.test(url);
 }
 
 function extractPlaceId(url: string): string | null {
@@ -59,11 +59,11 @@ async function fetchPlaceIdsFromList(listUrl: string): Promise<string[]> {
     for (const match of html.matchAll(/"id"\s*:\s*"(\d{7,14})"/g)) {
       idSet.add(match[1]);
     }
-    for (const match of html.matchAll(/\/place\/(\d{7,14})(?:\/|"|'|\s)/g)) {
+    for (const match of html.matchAll(/\/[a-zA-Z_-]+\/(\d{7,14})(?:\/|"|'|\s)/g)) {
       idSet.add(match[1]);
     }
 
-    return [...idSet].slice(0, 10);
+    return [...idSet].slice(0, 30);
   } catch {
     return [];
   }
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
   }
 
   // 중복 제거 후 최대 10개
-  const uniqueIds = [...new Set(placeIds)].slice(0, 10);
+  const uniqueIds = [...new Set(placeIds)].slice(0, 30);
 
   for (const placeId of uniqueIds) {
     const keywords = await fetchKeywords(placeId);

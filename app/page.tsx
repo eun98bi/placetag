@@ -16,7 +16,7 @@ interface AnalyzeResult {
 const MAX_URLS = 10;
 
 function isListUrl(url: string) {
-  return /place\.naver\.com\/place\/list/.test(url);
+  return /pcmap\.place\.naver\.com\/[^/?]+\/list/.test(url);
 }
 
 function UrlGuide() {
@@ -225,10 +225,10 @@ export default function Home() {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
-            분석 중... (업체당 0.3초 소요)
+            분석 중... (약 10초 소요)
           </span>
         ) : (
-          "태그 분석하기"
+          "태그 분석하기 · 약 10초 소요"
         )}
       </button>
 
