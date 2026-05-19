@@ -94,7 +94,7 @@ export default function RootLayout({
         <header className="bg-white border-b border-gray-100 sticky top-0 z-10">
           <div className="max-w-2xl mx-auto px-4 py-3 flex items-center gap-6">
             <Link href="/" className="text-sm font-bold text-gray-900">
-              플레이스 태그 분석기
+              플레이스 태그 키워드 추출기
             </Link>
             <Link
               href="/guide"
