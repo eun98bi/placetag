@@ -1,41 +1,21 @@
-"use client";
-
-import Script from "next/script";
-
-declare global {
-  interface Window {
-    PartnersCoupang?: {
-      G: new (options: {
-        id: number;
-        trackingCode: string;
-        subId: string | null;
-        template: string;
-        width: string;
-        height: string;
-      }) => unknown;
-    };
-  }
-}
-
 export default function CoupangPartnersAd() {
   return (
     <footer className="max-w-2xl mx-auto px-4 pb-10">
       <div className="flex flex-col items-center gap-2">
-        <div className="w-full max-w-[680px] min-h-[140px] overflow-hidden">
-          <Script
-            src="https://ads-partners.coupang.com/g.js"
-            strategy="afterInteractive"
-            onLoad={() => {
-              if (!window.PartnersCoupang) return;
-
-              new window.PartnersCoupang.G({
-                id: 991100,
-                trackingCode: "AF9566167",
-                subId: null,
-                template: "carousel",
-                width: "680",
-                height: "140",
-              });
+        <div className="w-full max-w-[680px] min-h-[140px] overflow-hidden text-center">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                new PartnersCoupang.G({
+                  "id": 991100,
+                  "trackingCode": "AF9566167",
+                  "subId": null,
+                  "template": "carousel",
+                  "width": "680",
+                  "height": "140"
+                });
+              `,
             }}
           />
         </div>
