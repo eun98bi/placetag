@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CoupangPartnersAd from "./CoupangPartnersAd";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://placetag.kr";
@@ -105,6 +106,7 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <CoupangPartnersAd />
       </body>
     </html>
   );
