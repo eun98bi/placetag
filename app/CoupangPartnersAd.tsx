@@ -1,22 +1,15 @@
 export default function CoupangPartnersAd() {
   return (
-    <footer className="max-w-2xl mx-auto px-4 pb-10">
+    <footer className="max-w-[720px] mx-auto px-4 pb-10">
       <div className="flex flex-col items-center gap-2">
         <div className="w-full max-w-[680px] min-h-[140px] overflow-hidden text-center">
-          <script src="https://ads-partners.coupang.com/g.js"></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                new PartnersCoupang.G({
-                  "id": 991100,
-                  "trackingCode": "AF9566167",
-                  "subId": null,
-                  "template": "carousel",
-                  "width": "680",
-                  "height": "140"
-                });
-              `,
-            }}
+          <iframe
+            title="Coupang Partners advertisement"
+            src="/coupang-partners-ad.html"
+            width="680"
+            height="140"
+            scrolling="no"
+            className="block w-[680px] max-w-full border-0"
           />
         </div>
         <p className="text-center text-[11px] leading-relaxed text-gray-400">
